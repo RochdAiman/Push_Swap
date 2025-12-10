@@ -21,13 +21,12 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (result);
 }
 
-char	**collect_args(int ac, char **av, int *counter, int *to_free)
+char	**collect_args(int ac, char **av, int *counter)
 {
 	char	**args;
 	char	*joined;
 	int		i;
 
-	*to_free = 1;
 	if (ac == 2)
 		args = ft_split(av[1], ' ');
 	else
@@ -53,7 +52,7 @@ void	free_args(char **args, int to_free)
 {
 	int		i;
 
-	if (!args || !to_free)
+	if (!args)
 		return ;
 	i = 0;
 	while (args[i])
