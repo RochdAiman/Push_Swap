@@ -6,7 +6,7 @@
 /*   By: arochd <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 12:32:11 by arochd            #+#    #+#             */
-/*   Updated: 2025/12/10 12:33:26 by arochd           ###   ########.fr       */
+/*   Updated: 2025/12/10 17:21:28 by arochd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ t_node	*stack_remove_back(t_stack *stack)
 		stack->head = NULL;
 	tmp->next = NULL;
 	tmp->prev = NULL;
+	stack->size--;
 	return (tmp);
 }

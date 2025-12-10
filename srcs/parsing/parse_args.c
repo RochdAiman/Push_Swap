@@ -6,7 +6,7 @@
 /*   By: arochd <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 17:51:13 by arochd            #+#    #+#             */
-/*   Updated: 2025/12/09 17:51:17 by arochd           ###   ########.fr       */
+/*   Updated: 2025/12/10 17:24:51 by arochd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	**collect_args(int ac, char **av, int *counter)
 	char	*joined;
 	int		i;
 
+	if (ac < 2 || !av || !counter)
+		return (*counter = 0, NULL);
 	if (ac == 2)
 		args = ft_split(av[1], ' ');
 	else
@@ -48,7 +50,7 @@ char	**collect_args(int ac, char **av, int *counter)
 	return (args);
 }
 
-void	free_args(char **args, int to_free)
+void	free_args(char **args)
 {
 	int		i;
 
@@ -72,6 +74,8 @@ int	valide_nbrs(char **args)
 	while (args[i])
 	{
 		j = 0;
+		if (!args[i] || !args[i][0])
+			return (0);
 		if (args[i][j] == '-' || args[i][j] == '+')
 			j++;
 		if (!args[i][j])
