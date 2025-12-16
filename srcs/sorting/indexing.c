@@ -14,22 +14,22 @@
 
 void	assign_indexes(t_stack *stack)
 {
-	t_node	*current;
-	t_node	*cmp;
+	t_node	*node;
+	t_node	*check;
 	int		index;
 
-	current = stack->head;
-	while (current)
+	node = stack->head;
+	while (node)
 	{
 		index = 0;
-		cmp = stack->head;
-		while (cmp)
+		check = stack->head;
+		while (check)
 		{
-			if (cmp->value < current->value)
+			if (check->value < node->value)
 				index++;
-			cmp = cmp->next;
+			check = check->next;
 		}
-		current->index = index;
-		current = current->next;
+		node->index = index;
+		node = node->next;
 	}
 }

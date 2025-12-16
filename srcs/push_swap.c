@@ -15,11 +15,11 @@
 static	void	error_exit(char **args, t_stack *a, t_stack *b)
 {
 	if (args)
-		free_args(args);
+		clear_args(args);
 	if (a)
-		stack_free(a);
+		cleanup_stack(a);
 	if (b)
-		stack_free(b);
+		cleanup_stack(b);
 	write(2, "Error\n", 6);
 	exit(1);
 }
@@ -29,13 +29,13 @@ static	void	choose_sort(t_stack *a, t_stack *b)
 	if (a->size == 2)
 		sa(a);
 	else if (a->size == 3)
-		ft_sort_three(a);
+		sort_three_items(a);
 	else if (a->size == 4)
-		ft_sort_four(a, b);
+		sort_four_items(a, b);
 	else if (a->size == 5)
-		ft_sort_five(a, b);
+		sort_five_items(a, b);
 	else
-		chunk_sort(a, b);
+		chunking_sort(a, b);
 }
 
 static	t_stack	*init_stacks(int ac, char **av, t_stack **stack_b)
@@ -45,16 +45,16 @@ static	t_stack	*init_stacks(int ac, char **av, t_stack **stack_b)
 	t_stack	*stack_a;
 
 	count = 0;
-	args = collect_args(ac, av, &count);
+	args = collect_arguments(ac, av, &count);
 	if (!args || count == 0)
 		error_exit(NULL, NULL, NULL);
-	if (!valide_nbrs(args) || dupchecks(args))
+	if (!numeric_checker(args) || dups_spotter(args))
 		error_exit(args, NULL, NULL);
-	stack_a = stack_init(args, count);
-	*stack_b = new_stack();
+	stack_a = build_stack(args, count);
+	*stack_b = create_stack();
 	if (!stack_a || !*stack_b)
 		error_exit(args, stack_a, *stack_b);
-	free_args(args);
+	clear_args(args);
 	return (stack_a);
 }
 
@@ -68,7 +68,7 @@ int	main(int ac, char **av)
 	stack_a = init_stacks(ac, av, &stack_b);
 	if (!is_sorted(stack_a))
 		choose_sort(stack_a, stack_b);
-	stack_free(stack_a);
-	stack_free(stack_b);
+	cleanup_stack(stack_a);
+	cleanup_stack(stack_b);
 	return (0);
 }

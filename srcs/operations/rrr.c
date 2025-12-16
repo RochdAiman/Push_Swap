@@ -21,13 +21,13 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 	{
 		node_a = stack_remove_back(stack_a);
 		if (node_a)
-			stack_add_front(stack_a, node_a);
+			add_to_top(stack_a, node_a);
 	}
 	if (stack_b && stack_b->size > 1)
 	{
 		node_b = stack_remove_back(stack_b);
 		if (node_b)
-			stack_add_front(stack_b, node_b);
+			add_to_top(stack_b, node_b);
 	}
 	write (1, "rrr\n", 4);
 }

@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-int	get_chunk_size(int size)
+int	calc_chunk_size(int size)
 {
 	if (size <= 100)
 		return (size / 5);
@@ -23,29 +23,29 @@ int	get_chunk_size(int size)
 
 int	find_max_index_position(t_stack *stack)
 {
-	t_node	*current;
+	t_node	*node;
 	int		max_index;
-	int		max_pos;
+	int		max_index_pos;
 	int		pos;
 
-	current = stack->head;
-	max_index = current->index;
-	max_pos = 0;
+	node = stack->head;
+	max_index = node->index;
+	max_index_pos = 0;
 	pos = 0;
-	while (current)
+	while (node)
 	{
-		if (current->index > max_index)
+		if (node->index > max_index)
 		{
-			max_index = current->index;
-			max_pos = pos;
+			max_index = node->index;
+			max_index_pos = pos;
 		}
-		current = current->next;
+		node = node->next;
 		pos++;
 	}
-	return (max_pos);
+	return (max_index_pos);
 }
 
-int	is_in_chunk(int index, int chunk_min, int chunk_max)
+int	is_in_chunk(int index, int min_val, int max_val)
 {
-	return (index >= chunk_min && index <= chunk_max);
+	return (index >= min_val && index <= max_val);
 }

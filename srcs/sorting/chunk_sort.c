@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-static	void	move_largest_to_top(t_stack *b)
+void	bring_max_top(t_stack *b)
 {
 	int	max_pos;
 	int	size;
@@ -31,23 +31,23 @@ static	void	move_largest_to_top(t_stack *b)
 			rrb(b);
 }
 
-static	void	push_all_back_to_a(t_stack *a, t_stack *b)
+void	push_back_to_a(t_stack *a, t_stack *b)
 {
 	while (b->size > 0)
 	{
-		move_largest_to_top(b);
+		bring_max_top(b);
 		pa(a, b);
 	}
 }
 
-void	chunk_sort(t_stack *a, t_stack *b)
+void	chunking_sort(t_stack *a, t_stack *b)
 {
 	int	i;
 	int	window;
 
 	assign_indexes(a);
 	i = 0;
-	window = get_chunk_size(a->size);
+	window = calc_chunk_size(a->size);
 	while (a->size > 0)
 	{
 		if (a->head->index <= i)
@@ -64,5 +64,5 @@ void	chunk_sort(t_stack *a, t_stack *b)
 		else
 			ra(a);
 	}
-	push_all_back_to_a(a, b);
+	push_back_to_a(a, b);
 }

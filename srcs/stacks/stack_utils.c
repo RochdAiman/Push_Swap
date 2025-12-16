@@ -12,35 +12,35 @@
 
 #include "../../includes/push_swap.h"
 
-void	stack_free(t_stack *stack)
+void	cleanup_stack(t_stack *stack)
 {
-	t_node	*current;
-	t_node	*tmp;
+	t_node	*node;
+	t_node	*temp;
 
 	if (!stack)
 		return ;
-	current = stack->head;
-	while (current)
+	node = stack->head;
+	while (node)
 	{
-		tmp = current->next;
-		free(current);
-		current = tmp;
+		temp = node->next;
+		free(node);
+		node = temp;
 	}
 	free(stack);
 }
 
 int	is_sorted(t_stack *stack)
 {
-	t_node	*current;
+	t_node	*node;
 
 	if (!stack || !stack->head)
 		return (0);
-	current = stack->head;
-	while (current && current->next)
+	node = stack->head;
+	while (node && node->next)
 	{
-		if (current->value > current->next->value)
+		if (node->value > node->next->value)
 			return (0);
-		current = current->next;
+		node = node->next;
 	}
 	return (1);
 }

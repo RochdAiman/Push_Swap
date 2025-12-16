@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-t_node	*new_node(int value)
+t_node	*create_node(int value)
 {
 	t_node	*node;
 
@@ -26,7 +26,7 @@ t_node	*new_node(int value)
 	return (node);
 }
 
-t_stack	*new_stack(void)
+t_stack	*create_stack(void)
 {
 	t_stack	*stack;
 
@@ -39,7 +39,7 @@ t_stack	*new_stack(void)
 	return (stack);
 }
 
-void	stack_add_front(t_stack *stack, t_node *node)
+void	add_to_top(t_stack *stack, t_node *node)
 {
 	if (!stack || !node)
 		return ;
@@ -57,7 +57,7 @@ void	stack_add_front(t_stack *stack, t_node *node)
 	stack->size++;
 }
 
-void	stack_add_back(t_stack *stack, t_node *node)
+void	add_to_bottom(t_stack *stack, t_node *node)
 {
 	if (!stack || !node)
 		return ;
@@ -75,25 +75,25 @@ void	stack_add_back(t_stack *stack, t_node *node)
 	stack->size++;
 }
 
-t_stack	*stack_init(char **args, int count)
+t_stack	*build_stack(char **args, int count)
 {
 	t_stack	*stack;
 	t_node	*node;
 	int		i;
 
-	stack = new_stack();
+	stack = create_stack();
 	if (!stack)
 		return (NULL);
 	i = 0;
 	while (i < count)
 	{
-		node = new_node(ft_atoi(args[i]));
+		node = create_node(ft_atoi(args[i]));
 		if (!node)
 		{
-			stack_free(stack);
+			cleanup_stack(stack);
 			return (NULL);
 		}
-		stack_add_back(stack, node);
+		add_to_bottom(stack, node);
 		i++;
 	}
 	return (stack);

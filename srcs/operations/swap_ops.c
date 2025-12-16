@@ -21,8 +21,8 @@ void	sa(t_stack *stack_a)
 		return ;
 	first = stack_remove_front(stack_a);
 	second = stack_remove_front(stack_a);
-	stack_add_front(stack_a, first);
-	stack_add_front(stack_a, second);
+	add_to_top(stack_a, first);
+	add_to_top(stack_a, second);
 	write(1, "sa\n", 3);
 }
 
@@ -35,8 +35,8 @@ void	sb(t_stack *stack_b)
 		return ;
 	first = stack_remove_front(stack_b);
 	second = stack_remove_front(stack_b);
-	stack_add_front(stack_b, first);
-	stack_add_front(stack_b, second);
+	add_to_top(stack_b, first);
+	add_to_top(stack_b, second);
 	write(1, "sb\n", 3);
 }
 
@@ -51,15 +51,15 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 	{
 		first_a = stack_remove_front(stack_a);
 		second_a = stack_remove_front(stack_a);
-		stack_add_front(stack_a, first_a);
-		stack_add_front(stack_a, second_a);
+		add_to_top(stack_a, first_a);
+		add_to_top(stack_a, second_a);
 	}
 	if (stack_b && stack_b->size > 1)
 	{
 		first_b = stack_remove_front(stack_b);
 		second_b = stack_remove_front(stack_b);
-		stack_add_front(stack_b, first_b);
-		stack_add_front(stack_b, second_b);
+		add_to_top(stack_b, first_b);
+		add_to_top(stack_b, second_b);
 	}
 	write (1, "ss\n", 3);
 }

@@ -12,25 +12,25 @@
 
 #include "../../includes/push_swap.h"
 
-int	find_min_position(t_stack *a)
+int	smallest_location(t_stack *a)
 {
-	t_node	*current;
+	t_node	*node;
 	int		min_value;
 	int		min_pos;
 	int		pos;
 
-	current = a->head;
-	min_value = current->value;
+	node = a->head;
+	min_value = node->value;
 	min_pos = 0;
 	pos = 0;
-	while (current)
+	while (node)
 	{
-		if (current->value < min_value)
+		if (node->value < min_value)
 		{
-			min_value = current->value;
+			min_value = node->value;
 			min_pos = pos;
 		}
-		current = current->next;
+		node = node->next;
 		pos++;
 	}
 	return (min_pos);
@@ -59,7 +59,7 @@ void	push_min_to_b(t_stack *a, t_stack *b)
 	int	pos;
 	int	size;
 
-	pos = find_min_position(a);
+	pos = smallest_location(a);
 	size = a->size;
 	if (pos <= size / 2)
 		rotate_up(a, pos);

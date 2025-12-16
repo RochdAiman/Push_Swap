@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-char	*ft_strjoin_free(char *s1, char *s2)
+char	*join_and_free(char *s1, char *s2)
 {
 	char	*result;
 
@@ -21,36 +21,36 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (result);
 }
 
-char	**collect_args(int ac, char **av, int *counter)
+char	**collect_arguments(int ac, char **av, int *count)
 {
-	char	**args;
-	char	*joined;
+	char	**arguments;
+	char	*temp;
 	int		i;
 
-	if (ac < 2 || !av || !counter)
-		return (*counter = 0, NULL);
+	if (ac < 2 || !av || !count)
+		return (*count = 0, NULL);
 	if (ac == 2)
-		args = ft_split(av[1], ' ');
+		arguments = ft_split(av[1], ' ');
 	else
 	{
-		joined = ft_strdup(av[1]);
+		temp = ft_strdup(av[1]);
 		i = 2;
 		while (i < ac)
 		{
-			joined = ft_strjoin_free(joined, " ");
-			joined = ft_strjoin_free(joined, av[i++]);
+			temp = join_and_free(temp, " ");
+			temp = join_and_free(temp, av[i++]);
 		}
-		args = ft_split(joined, ' ');
-		free(joined);
+		arguments = ft_split(temp, ' ');
+		free(temp);
 	}
 	i = 0;
-	while (args && args[i])
+	while (arguments && arguments[i])
 		i++;
-	*counter = i;
-	return (args);
+	*count = i;
+	return (arguments);
 }
 
-void	free_args(char **args)
+void	clear_args(char **args)
 {
 	int	i;
 
@@ -65,57 +65,57 @@ void	free_args(char **args)
 	free(args);
 }
 
-int	valide_nbrs(char **args)
+int	numeric_checker(char **args)
 {
 	int		i;
-	int		j;
-	long	nb;
+	int		pos;
+	long	num;
 
 	i = 0;
 	while (args[i])
 	{
-		j = 0;
-		if (!args[i][j])
+		pos = 0;
+		if (!args[i][pos])
 			return (0);
-		if (args[i][j] == '-' || args[i][j] == '+')
-			j++;
-		if (!args[i][j])
+		if (args[i][pos] == '-' || args[i][pos] == '+')
+			pos++;
+		if (!args[i][pos])
 			return (0);
-		while (args[i][j])
+		while (args[i][pos])
 		{
-			if (args[i][j] < '0' || args[i][j] > '9')
+			if (args[i][pos] < '0' || args[i][pos] > '9')
 				return (0);
-			j++;
+			pos++;
 		}
-		nb = ft_atoi(args[i++]);
-		if (nb > 2147483647 || nb < -2147483648)
+		num = ft_atoi(args[i++]);
+		if (num > 2147483647 || num < -2147483648)
 			return (0);
 	}
 	return (1);
 }
 
-int	dupchecks(char **args)
+int	dups_spotter(char **args)
 {
 	int		i;
-	int		j;
-	long	nb1;
-	long	nb2;
+	int		k;
+	long	num1;
+	long	num2;
 
 	i = 0;
 	while (args[i])
 	{
-		nb1 = ft_atoi(args[i]);
-		if (nb1 > 2147483647 || nb1 < -2147483648)
+		num1 = ft_atoi(args[i]);
+		if (num1 > 2147483647 || num1 < -2147483648)
 			return (0);
-		j = i + 1;
-		while (args[j])
+		k = i + 1;
+		while (args[k])
 		{
-			nb2 = ft_atoi(args[j]);
-			if (nb2 > 2147483647 || nb2 < -2147483648)
+			num2 = ft_atoi(args[k]);
+			if (num2 > 2147483647 || num2 < -2147483648)
 				return (0);
-			if (nb2 == nb1)
+			if (num2 == num1)
 				return (1);
-			j++;
+			k++;
 		}
 		i++;
 	}

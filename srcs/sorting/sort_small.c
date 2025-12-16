@@ -12,47 +12,47 @@
 
 #include "../../includes/push_swap.h"
 
-void	ft_sort_three(t_stack *a)
+void	sort_three_items(t_stack *a)
 {
-	int	first;
-	int	second;
-	int	third;
+	int	top;
+	int	mid;
+	int	bottom;
 
-	first = a->head->value;
-	second = a->head->next->value;
-	third = a->head->next->next->value;
-	if (first < second && second < third)
+	top = a->head->value;
+	mid = a->head->next->value;
+	bottom = a->head->next->next->value;
+	if (top < mid && mid < bottom)
 		return ;
-	else if (first < second && second > third && first < third)
+	else if (top < mid && mid > bottom && top < bottom)
 	{
 		sa(a);
 		ra(a);
 	}
-	else if (first > second && second < third && first < third)
+	else if (top > mid && mid < bottom && top < bottom)
 		sa(a);
-	else if (first < second && second > third && first > third)
+	else if (top < mid && mid > bottom && top > bottom)
 		rra(a);
-	else if (first > second && second < third && first > third)
+	else if (top > mid && mid < bottom && top > bottom)
 		ra(a);
-	else if (first > second && second > third)
+	else if (top > mid && mid > bottom)
 	{
 		sa(a);
 		rra(a);
 	}
 }
 
-void	ft_sort_four(t_stack *a, t_stack *b)
+void	sort_four_items(t_stack *a, t_stack *b)
 {
 	push_min_to_b(a, b);
-	ft_sort_three(a);
+	sort_three_items(a);
 	pa(a, b);
 }
 
-void	ft_sort_five(t_stack *a, t_stack *b)
+void	sort_five_items(t_stack *a, t_stack *b)
 {
 	push_min_to_b(a, b);
 	push_min_to_b(a, b);
-	ft_sort_three(a);
+	sort_three_items(a);
 	pa(a, b);
 	pa(a, b);
 }
@@ -67,9 +67,9 @@ void	small_sort(t_stack *a, t_stack *b)
 			sa(a);
 	}
 	else if (a->size == 3)
-		ft_sort_three(a);
+		sort_three_items(a);
 	else if (a->size == 4)
-		ft_sort_four(a, b);
+		sort_four_items(a, b);
 	else if (a->size == 5)
-		ft_sort_five(a, b);
+		sort_five_items(a, b);
 }
