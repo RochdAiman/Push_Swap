@@ -26,9 +26,9 @@ This project has been created as part of the 42 curriculum by <arochd>
 ### How To Compile
     To build the project, just run 'make'
 
-    ```bash
-    make
-    ```
+```bash
+make
+```
 
     This will generate an executable called 'push_swap'.
 
@@ -36,8 +36,8 @@ This project has been created as part of the 42 curriculum by <arochd>
 
     Run the program with a list of integers as arguments:
 
-    ```bash
-    ./push_swap 2 1 3 6 5 8
-    ```
+```bash
+./push_swap 2 1 3 6 5 8
+```
 
     The output will be a list of operations to sort tthe numbers. If you pass a sorted list, the program prints nothing.
