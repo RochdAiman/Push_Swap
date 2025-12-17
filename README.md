@@ -4,11 +4,22 @@ This project has been created as part of the 42 curriculum by <arochd>
 
 ## Description
 
-    The "Push_swap" project is all about sorting a stack of numbers with the fewest possible moves, using only a limited set of operations. It's an algorithm puzzle designed to test both creativity and efficiency .
+    The "Push_swap" project is all about sorting a stack of 
+    numbers with the fewest possible moves, using only a 
+    limited set of operations. It's an algorithm puzzle 
+    designed to test both creativity and efficiency .
 
-    The idea is simple : you start with a list of unsorted integers, and your goal is to print out a sequence of operations that will sort that list. But there's a catch: you can only use two stacks, and you're limited to a specific set of commands (push, swap, rotate, and their variations). that means every counts, and finding the optimal solution is both challenging and rewarding.
+    The idea is simple : you start with a list of unsorted 
+    integers, and your goal is to print out a sequence of 
+    operations that will sort that list. But there's a catch:
+    you can only use two stacks, and you're limited to a 
+    specific set of commands (push, swap, rotate, and their
+    variations). that means every counts, and finding the optimal
+    solution is both challenging and rewarding.
 
-    Throughout this project, I learned a great deal about algorithm optimization, stack operations, and the trade-offs between brute-force versus efficient sorting methods.
+    Throughout this project, I learned a great deal about algorithm
+    optimization, stack operations, and the trade-offs between 
+    brute-force versus efficient sorting methods.
 
 ## Instructions
 
