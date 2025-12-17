@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-void	assign_indexes(t_stack *stack)
+void	index_stack_nodes(t_stack *stack)
 {
 	t_node	*node;
 	t_node	*check;

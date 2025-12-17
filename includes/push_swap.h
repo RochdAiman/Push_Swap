@@ -83,7 +83,7 @@ void	small_sort(t_stack *a, t_stack *b);
 void	sort_three_items(t_stack *a);
 void	sort_four_items(t_stack *a, t_stack *b);
 void	sort_five_items(t_stack *a, t_stack *b);
-void	assign_indexes(t_stack *stack);
+void	index_stack_nodes(t_stack *stack);
 int		calc_chunk_size(int stack_size);
 int		find_max_index_position(t_stack *stack);
 int		is_in_chunk(int index, int chunk_min, int chunk_max);

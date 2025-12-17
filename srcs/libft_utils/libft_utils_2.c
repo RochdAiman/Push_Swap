@@ -97,3 +97,23 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+char	*ft_strdup(const char *s)
+{
+	size_t	i;
+	size_t	len;
+	char	*duplicated;
+
+	len = ft_strlen(s);
+	duplicated = malloc((len + 1) * sizeof(char));
+	if (!duplicated)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		duplicated[i] = s[i];
+		i++;
+	}
+	duplicated[i] = '\0';
+	return (duplicated);
+}

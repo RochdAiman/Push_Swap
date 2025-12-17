@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-static	void	error_exit(char **args, t_stack *a, t_stack *b)
+void	error_exit(char **args, t_stack *a, t_stack *b)
 {
 	if (args)
 		clear_args(args);
@@ -24,7 +24,7 @@ static	void	error_exit(char **args, t_stack *a, t_stack *b)
 	exit(1);
 }
 
-static	void	choose_sort(t_stack *a, t_stack *b)
+void	choose_sort(t_stack *a, t_stack *b)
 {
 	if (a->size == 2)
 		sa(a);

@@ -43,11 +43,11 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 void	chunking_sort(t_stack *a, t_stack *b)
 {
 	int	i;
-	int	window;
+	int	chunk;
 
-	assign_indexes(a);
+	index_stack_nodes(a);
 	i = 0;
-	window = calc_chunk_size(a->size);
+	chunk = calc_chunk_size(a->size);
 	while (a->size > 0)
 	{
 		if (a->head->index <= i)
@@ -56,7 +56,7 @@ void	chunking_sort(t_stack *a, t_stack *b)
 			rb(b);
 			i++;
 		}
-		else if (a->head->index <= i + window)
+		else if (a->head->index <= i + chunk)
 		{
 			pb(a, b);
 			i++;

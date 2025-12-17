@@ -37,7 +37,7 @@ long	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-static size_t	count_words(const char *s, char c)
+size_t	count_words(const char *s, char c)
 {
 	size_t	i;
 	size_t	nbr;
@@ -60,26 +60,21 @@ static size_t	count_words(const char *s, char c)
 	return (nbr);
 }
 
-static void	freeing(char **arr, int i)
+void	freeing(char **arr, int i)
 {
 	while (i >= 0)
 		free(arr[i--]);
 	free(arr);
 }
 
-char	**ft_split(char const *s, char c)
+char	**array_filling(char **strs, char const *s, char c)
 {
-	char	**strs;
 	size_t	i;
 	size_t	j;
 	size_t	cntr;
 
-	if (!s)
-		return (NULL);
-	strs = malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!strs)
-		return (NULL);
-	(1 == 1) && (i = 0, cntr = 0);
+	i = 0;
+	cntr = 0;
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)
@@ -93,25 +88,18 @@ char	**ft_split(char const *s, char c)
 		if (!strs[cntr++])
 			return (freeing(strs, cntr - 1), NULL);
 	}
-	return (strs[cntr] = NULL, strs);
+	strs[cntr] = NULL;
+	return (strs);
 }
 
-char	*ft_strdup(const char *s)
+char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	len;
-	char	*duplicated;
+	char	**strs;
 
-	len = ft_strlen(s);
-	duplicated = malloc((len + 1) * sizeof(char));
-	if (!duplicated)
+	if (!s)
 		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		duplicated[i] = s[i];
-		i++;
-	}
-	duplicated[i] = '\0';
-	return (duplicated);
+	strs = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!strs)
+		return (NULL);
+	return (array_filling(strs, s, c));
 }

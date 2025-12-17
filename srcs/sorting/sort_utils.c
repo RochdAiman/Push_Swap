@@ -36,7 +36,7 @@ int	smallest_location(t_stack *a)
 	return (min_pos);
 }
 
-static void	rotate_up(t_stack *a, int pos)
+void	rotate_up(t_stack *a, int pos)
 {
 	while (pos > 0)
 	{
@@ -45,7 +45,7 @@ static void	rotate_up(t_stack *a, int pos)
 	}
 }
 
-static void	rotate_down(t_stack *a, int pos, int size)
+void	rotate_down(t_stack *a, int pos, int size)
 {
 	while (pos < size)
 	{

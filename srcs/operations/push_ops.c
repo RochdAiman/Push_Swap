@@ -19,8 +19,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 	if (!stack_b || !stack_b->head)
 		return ;
 	node = stack_remove_front(stack_b);
-	if (node)
-		add_to_top(stack_a, node);
+	add_to_top(stack_a, node);
 	write(1, "pa\n", 3);
 }
 
@@ -31,7 +30,6 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 	if (!stack_a || !stack_a->head)
 		return ;
 	node = stack_remove_front(stack_a);
-	if (node)
-		add_to_top(stack_b, node);
+	add_to_top(stack_b, node);
 	write(1, "pb\n", 3);
 }
