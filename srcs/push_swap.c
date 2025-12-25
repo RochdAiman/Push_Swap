@@ -24,23 +24,22 @@ void	error_exit(char **args, t_stack *a, t_stack *b)
 	exit(1);
 }
 
-void    validate_input(int argc, char **argv)
+void    validate_input(int ac, char **av)
 {
-    int i;
-    int j;
-    int has_digit;
+    int	i;
+    int	j;
+    int	has_digit;
 
     i = 1;
-    while (i < argc)
+    while (i < ac)
     {
-        if (argv[i][0] == '\0')
+        if (av[i][0] == '\0')
             error_exit(NULL, NULL, NULL);
-        
         j = 0;
         has_digit = 0;
-        while (argv[i][j])
+        while (av[i][j])
         {
-            if (argv[i][j] >= '0' && argv[i][j] <= '9')
+            if (av[i][j] >= '0' && av[i][j] <= '9')
                 has_digit = 1;
             j++;
         }
@@ -91,6 +90,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
+	validate_input(ac, av);
 	stack_a = init_stacks(ac, av, &stack_b);
 	if (!stack_a || !stack_a->head)
 		return (0);
