@@ -24,6 +24,32 @@ void	error_exit(char **args, t_stack *a, t_stack *b)
 	exit(1);
 }
 
+void    validate_input(int argc, char **argv)
+{
+    int i;
+    int j;
+    int has_digit;
+
+    i = 1;
+    while (i < argc)
+    {
+        if (argv[i][0] == '\0')
+            error_exit(NULL, NULL, NULL);
+        
+        j = 0;
+        has_digit = 0;
+        while (argv[i][j])
+        {
+            if (argv[i][j] >= '0' && argv[i][j] <= '9')
+                has_digit = 1;
+            j++;
+        }
+        if (!has_digit)
+            error_exit(NULL, NULL, NULL);
+        i++;
+    }
+}
+
 void	choose_sort(t_stack *a, t_stack *b)
 {
 	if (a->size == 2)
