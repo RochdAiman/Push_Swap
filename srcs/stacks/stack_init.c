@@ -85,7 +85,7 @@ t_stack	*build_stack(char **args, int count)
 	if (!stack)
 		return (NULL);
 	i = 0;
-	while (i < count) // you can use args[i]
+	while (i < count)// you can use args[i]
 	{
 		node = create_node(ft_atoi(args[i]));
 		if (!node)
