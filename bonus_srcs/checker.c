@@ -31,6 +31,8 @@ int	is_all_whitespace(char *str)
 
 int	execute(char *line, t_stack *a, t_stack *b)
 {
+	if (!line)
+		return (0);
 	if (ft_strcmp(line, "pa\n") == 0)
 		pa(a, b);
 	else if (ft_strcmp(line, "pb\n") == 0)
@@ -54,7 +56,7 @@ int	execute(char *line, t_stack *a, t_stack *b)
 	else if (ft_strcmp(line, "ss\n") == 0)
 		ss(a, b);
 	else
-		return (0);
+		return (-1);
 	return (1);
 }
 
@@ -91,18 +93,18 @@ int	main(int ac, char **av)
 		return (0);
 	a = init_stacks_bonus(ac, av, &b);
 	line = get_next_line(0);
-	while (line)
-	{
-		if (!execute(line, a, b))
-		{
-			free(line);
-			free_stacks(a, b);
-			write(2, "Error\n", 6);
-			return (1);
-		}
-		free(line);
-		line = get_next_line(0);
-	}
+    while (line)
+    {
+        if (!execute(line, a, b))
+        {
+            free(line);
+            free_stacks(a, b);
+            write(2, "Error\n", 6);
+            return (1);
+        }
+        free(line);
+        line = get_next_line(0);
+    }
 	if (is_sorted(a) && !b->size)
 		write(1, "OK\n", 3);
 	else
