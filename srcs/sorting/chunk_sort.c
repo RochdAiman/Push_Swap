@@ -30,14 +30,47 @@ void	bring_max_top(t_stack *b)
 		while (max_pos++ < size)
 			rrb(b);
 }
-
-void	push_back_to_a(t_stack *a, t_stack *b)
+int get_pos_by_index(t_stack *stack, int target_index)
 {
-	while (b->size > 0)
-	{
-		bring_max_top(b);
-		pa(a, b);
-	}
+    t_node	*node;
+    int		pos;
+
+    node = stack->head;
+    pos = 0;
+    while (node)
+    {
+        if (node->index == target_index)
+            return (pos);
+        node = node->next;
+        pos++;
+    }
+    return (-1);
+}
+
+void    push_back_to_a(t_stack *a, t_stack *b)
+{
+    int max_i;
+    int pos_max;
+    int pos_next;
+
+    while (b->size > 0)
+    {
+        max_i = b->size - 1;
+        pos_max = get_pos_by_index(b, max_i);
+        pos_next = get_pos_by_index(b, max_i - 1);
+        if (b->size > 1 && pos_next == 0)
+        {
+            pa(a, b);
+            bring_max_top(b);
+            pa(a, b);
+            sa(a);
+        }
+        else
+        {
+            bring_max_top(b);
+            pa(a, b);
+        }
+    }
 }
 
 void	chunking_sort(t_stack *a, t_stack *b)

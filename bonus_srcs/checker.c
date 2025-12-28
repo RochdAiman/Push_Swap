@@ -6,7 +6,7 @@
 /*   By: arochd <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:59:28 by arochd            #+#    #+#             */
-/*   Updated: 2025/12/19 20:59:29 by arochd           ###   ########.fr       */
+/*   Updated: 2025/12/26 09:54:12 by arochd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	is_all_whitespace(char *str)
 
 int	execute(char *line, t_stack *a, t_stack *b)
 {
-	if (!line)
-		return (0);
 	if (ft_strcmp(line, "pa\n") == 0)
 		pa(a, b);
 	else if (ft_strcmp(line, "pb\n") == 0)
@@ -87,24 +85,24 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	char 	*line;
+	char	*line;
 
-	if (ac < 2 || !av[1][0] || is_all_whitespace(av[1]))
+	if (ac < 2 ||!av[1][0] || is_all_whitespace(av[1]))
 		return (0);
 	a = init_stacks_bonus(ac, av, &b);
 	line = get_next_line(0);
-    while (line)
-    {
-        if (!execute(line, a, b))
-        {
-            free(line);
-            free_stacks(a, b);
-            write(2, "Error\n", 6);
-            return (1);
-        }
-        free(line);
-        line = get_next_line(0);
-    }
+	while (line)
+	{
+		if (!execute(line, a, b))
+		{
+			free(line);
+			free_stacks(a, b);
+			write (2, "Error\n", 6);
+			return (1);
+		}
+		free(line);
+		line = get_next_line(0);
+	}
 	if (is_sorted(a) && !b->size)
 		write(1, "OK\n", 3);
 	else

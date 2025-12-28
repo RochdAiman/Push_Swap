@@ -15,7 +15,7 @@
 int	calc_chunk_size(int size)
 {
 	if (size <= 100)
-		return (size / 5);
+		return (18);
 	if (size <= 500)
 		return (size / 12);
 	return (size / 13);

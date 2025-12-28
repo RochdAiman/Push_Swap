@@ -27,8 +27,8 @@ char	**collect_arguments(int ac, char **av, int *count)
 	char	*temp;
 	int		i;
 
-	if (ac < 2 || !av || !count) // to chcek
-		return (*count = 0, NULL);
+	// if (ac < 2 || !av || !count) // to chcek
+	// 	return (*count = 0, NULL);
 	if (ac == 2) // no need for condition maybe
 		arguments = ft_split(av[1], ' ');
 	else
@@ -75,8 +75,8 @@ int	numeric_checker(char **args)
 	while (args[i])
 	{
 		pos = 0;
-		if (!args[i][pos]) // no need (already handled in the count != 0) check previous call 
-			return (0);
+		// if (!args[i][pos]) // no need (already handled in the count != 0) check previous call 
+		// 	return (0);
 		if (args[i][pos] == '-' || args[i][pos] == '+')
 			pos++;
 		if (!args[i][pos])
@@ -105,14 +105,14 @@ int	dups_spotter(char **args)
 	while (args[i])
 	{
 		num1 = ft_atoi(args[i]);
-		if (num1 > 2147483647 || num1 < -2147483648) // no need
-			return (0);
+		// if (num1 > 2147483647 || num1 < -2147483648) // no need
+		// 	return (0);
 		k = i + 1;
 		while (args[k])
 		{
 			num2 = ft_atoi(args[k]);
-			if (num2 > 2147483647 || num2 < -2147483648) // no need
-				return (0);
+			// if (num2 > 2147483647 || num2 < -2147483648) // no need
+			// 	return (0);
 			if (num2 == num1)
 				return (1);
 			k++;
